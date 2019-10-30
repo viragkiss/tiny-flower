@@ -1,3 +1,12 @@
+/*Recreate an old computer art from Triangulation
+by Virag Kiss
+Intro to IM
+Week 9
+
+Populate the canvas with squares within squares
+
+*/
+
 
 //width and height of rectangle
 float w = 50;
