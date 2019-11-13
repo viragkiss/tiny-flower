@@ -23,7 +23,8 @@ void setup() {
 }
 
 void draw() {
-  pointLight(255, 255, 255, width/2, height/2, 800);
+  //pointLight(255, 255, 255, width/2, height/2, 800);
+  lights();
   
   int[][] myData = new int [rows][cols];
   
