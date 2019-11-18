@@ -1,0 +1,24 @@
+/*
+  Here I modified the Dimmer example to fit with my Processing sketch
+  (File/Examples/Communication/Dimmer
+*/
+
+const int ledPin = 13;   //use Arduino's own light for convenience
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  byte isblinking;   //technically a boolean
+
+  if (Serial.available()) {
+    
+    isblinking = Serial.read();
+    //map the boolean value to LED values
+    isblinking = map(isblinking, 0, 1, 0, 255);
+
+    analogWrite(ledPin, isblinking);
+  }
+}
