@@ -1,0 +1,142 @@
+/* Virag Kiss - Serial Communication Assignment - Week 12
+
+This is a modification of my first OOP project in Processing.
+I use 2 objects, eyes and a bouncing ball. The ball bounces around the eyes and bounces off them and the borders when colliding.
+In this version, to make the program simple the eyes are static and don't try to follow the ball.
+When the ball bounces off the borders, the LED on the Arduino blinks.
+
+ */
+
+import processing.serial.*;
+Serial port;
+
+//this array is for the bouncing ball. every time the ball is initialised, its velocity is random
+float [] speeds = {4, 5, 6, 7, 8};
+
+
+//this class is for the eyes
+// x and y are coordinates and w is width(diameter) of circles throughout the program
+
+class EyeBall {
+
+  float bigx, bigy, bigw;
+
+  EyeBall (float x, float y, float w) {
+    bigx = x;
+    bigy = y;
+    bigw = w;
+  }
+
+  //make eye white and iris
+  void drawCircle() {
+    fill(255);
+    circle(bigx, bigy, bigw);
+    fill(0);
+    circle(bigx, bigy, bigw/3);
+  }
+}
+//-----------------------------End of the BigEyeBall class---------------------------------------
+
+
+//this class is for the bouncing ball
+class BouncingBall {
+
+  float smallx, smally, smallw, xSpeed, ySpeed;
+  boolean collision;
+
+  BouncingBall (float x, float y, float w) {
+
+    //ball appears randomly on the board
+    smallx = random(x);
+    smally = random(y);
+    smallw = w;
+
+    xSpeed = speeds[int(random(0, 5))];  //random() returns a float --> convert to int to get index
+    ySpeed = speeds[int(random(0, 5))];  //xSpeed +- 1; //a way to get the ySpeed being similar to the xspeed
+
+    collision = false;   //state variable --> true if collision occures
+  }
+
+  void update() {
+    smallx += xSpeed;
+    smally += ySpeed;
+  }
+
+  //this function checks whether the ball collides with the borders or the eyes
+  //random (-1, 1) adds a value to the speed at border collision to change it only slightly
+  //this way the ball moves around the space instead of being stuck in a set path
+
+  void checkCollisions(EyeBall ball) {
+
+    if ( (smallx < smallw/2) || (smallx > width-smallw/2)) {
+      xSpeed = -xSpeed + random(-1, 1);
+      collision = true;
+    }
+    if ( (smally < smallw/2) || (smally > height-smallw/2)) {
+      ySpeed = -ySpeed + random(-1, 1);
+      collision = true;
+    }
+    if (dist(ball.bigx, ball.bigy, smallx, smally) < (ball.bigw/2 + smallw/2)) {
+      xSpeed = -xSpeed;
+      ySpeed = -ySpeed;
+      collision = true;
+    }
+    if (dist((ball.bigx + 200), 400, smallx, smally) < (ball.bigw/2 + smallw/2)) {
+      xSpeed = -xSpeed;
+      ySpeed = -ySpeed;
+      collision = true;
+    }
+  }
+
+  void drawCircle() {
+    fill(255, 0, 0);
+    noStroke();
+    circle(smallx, smally, smallw);
+  } 
+
+  void printInfo() {
+    if (collision == true) {
+      //prints are for checking whether the state variable works
+      //println(1);
+
+      //port sends a 1 to the Arduino if collision is true
+      //Arduino uses it as a flag to blink the LED once
+      port.write(byte(1));
+      collision = false;  //change state variable back to false
+    } else {
+      //print(0);
+      //no collision, no blinking
+      port.write(byte(0));
+    }
+  }
+}
+//-----------------------------end of bouncing ball class------------------------------------
+
+
+EyeBall myeye = new EyeBall(300, 400, 150);
+EyeBall myeye2 = new EyeBall(500, 400, 150);
+
+BouncingBall bouncebounce = new BouncingBall(750, 750, 20);
+
+
+void setup() {
+  size(800, 800);
+  smooth();
+
+  //Taken from Arduino example 'Dimmer'. These lines are to see which port we are using.
+  //println("Available serial ports:");
+  //println(Serial.list());
+  port = new Serial(this, Serial.list()[0], 9600);
+}
+
+void draw() {
+  background(144, 202, 249);
+
+  myeye.drawCircle();
+  myeye2.drawCircle();
+
+  bouncebounce.update();
+  bouncebounce.checkCollisions(myeye);
+  bouncebounce.drawCircle();
+  bouncebounce.printInfo();
+}
