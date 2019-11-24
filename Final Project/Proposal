@@ -1,0 +1,57 @@
+
+Overview:
+
+This project is a simulation of the experience of an artist making sand art. Sand art is present in many cultures around the world -I've
+especially been inspired by native Aboriginal Australian ceremonies, where sand art is made simultaneously and in reaction to ceremonial
+dance, song and poetry. In this exmaple, it is a means through which a person visually expresses her/his ancestral stories. In this
+project, I would like to create an experience through which the user can connect with their own inner self, stories and feelings through
+my virtual sand art space.
+
+List of parts and equipment needed:
+
+- laptop
+- Arduino
+- wires
+Not in kit:
+- touchpad: 3.5inch RPi Display with XPT2046 Touch Controller
+- possibly: large TV screen
+
+
+Outline of the components and their functions in the program:
+
+The Arduino program reads the data of the touch controller as input and sends the data to Processing in the form of (x, y) coordinates.
+The touchpad has to be connected in a way that enables only the touch controller and disables the display, as the latter will be
+displayed on the laptop or TV screen.
+
+The Processing program reads the (x, y) coordinates of each line drawn by the user's hand on the touch pad and visualises it in a way 
+that mimics the natural flowy and grainy qualities of sand. The sand is a pool of colored points. The line looks drawn as the location
+of the sand points along the z-axes inscreases (they get pulled into the screen and appear further away). Unlike the sand with which 
+artists traditionally draw, the touchpad doesn't sense pressure. This means that the Processing code needs to take the neighbouring
+coordinates as well and adjust their z-axis values, pull them away from the user but less so than the central points - this way the
+algorithm draws a little tunnel the width of a generic finger (average sized human finger) where it reads the line has been draw on
+the touchpad. This program will require the P3D mode.
+
+Circuit setup:
+
+The touchpad is connected by wires to Arduino and acts as a touch sensor. Arduino reads the input of the touch sensor and as output,
+generates an array of corrdinates to be sent to Processing. Processing should read null if there is nothing coming from Arduino -eg.
+nothing has been drawn.
+Arduino is connected to the laptop through a USB cable. The laptop can be connected to a TV screen, which could potentially increase
+the cool effects of the program. Processing displays the output on the laptop screen, which might cast it to a TV screen.
+
+Things to learn I don't yet know:
+
+- how to write a program that simulates natural phenomena
+- P3D - I have worked with P3D before but not extensively
+- using and reading the touchpad with Arduino
+- disabling touchpad display while keeping touch controller enabled
+
+Areas of greatest concern:
+
+- getting the touchpad to work accurately and without interruption
+- sending the data to processing in a correct format
+- getting the natural quality of sand through code
+- harmonising input and output and creating the most pleasurable and uninterrupted user experience (essentially optimising setup
+and code)
+
+
