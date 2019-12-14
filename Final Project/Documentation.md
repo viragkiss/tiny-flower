@@ -6,7 +6,8 @@ the user, they can be pulled and pushed around, and they can be removed from the
 
 ## **Pictures and videos:**
 Pictures:
-![alt text](Final Project/Images and Videos/IMG_4466.jpg)
+
+![alt text](Final Project/Images and Videos/IMG_4466.jpg "Image 1")
 
 System diagram of the hardware and software
 List of important parts (don’t include wires, resistors, etc.)
