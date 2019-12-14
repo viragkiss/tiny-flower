@@ -2,8 +2,7 @@
 # **The _Rainbow Tank_**
 
 ### **Overall project concept and description**
-This project was created to model particles and let users play around with them in a closed box space. Particles can be created by
-the user, they can be pulled and pushed around, and they can be removed from the box. 
+This project is about colorful and playful visual simulation, created in the hope of making people excited and react to it with wonder. It models particles and lets users play around with them in a closed box space. Particles can be created by the user, they can be pulled and pushed around, and they can be removed from the box.
 
 ### **Pictures and videos**
 Circuit schematics:
