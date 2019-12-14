@@ -17,11 +17,13 @@ Pictures:
 
 Videos:
 
-![alt text](https://github.com/viragkiss/tiny-flower/blob/master/Final%20Project/Images%20and%20Videos/IMG_4442.MOV "Video 1")
+These can be viewed when downloaded. Open video and go to 'view raw'.
 
-![alt text](https://github.com/viragkiss/tiny-flower/blob/master/Final%20Project/Images%20and%20Videos/001.MOV "Video 2")
+![Video 1](https://github.com/viragkiss/tiny-flower/blob/master/Final%20Project/Images%20and%20Videos/IMG_4442.MOV "Video 1")
 
-![alt text](https://github.com/viragkiss/tiny-flower/blob/master/Final%20Project/Images%20and%20Videos/002.MOV "Video 3")
+![Video 2](https://github.com/viragkiss/tiny-flower/blob/master/Final%20Project/Images%20and%20Videos/001.MOV "Video 2")
+
+![Video 3](https://github.com/viragkiss/tiny-flower/blob/master/Final%20Project/Images%20and%20Videos/002.MOV "Video 3")
 
 ### **List of important parts**
 * Analog joystick
