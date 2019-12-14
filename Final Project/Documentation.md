@@ -1,10 +1,11 @@
 # **Final Project Documentation**
+# **The _Rainbow Tank_**
 
-## **Overall project concept and description**
+### **Overall project concept and description**
 This project was created to model particles and let users play around with them in a closed box space. Particles can be created by
 the user, they can be pulled and pushed around, and they can be removed from the box. 
 
-## **Pictures and videos**
+### **Pictures and videos**
 Circuit schematics:
 
 ![alt text](https://github.com/viragkiss/tiny-flower/blob/master/Final%20Project/Images%20and%20Videos/IMG_4466.jpg "Image 1")
@@ -23,19 +24,19 @@ Videos:
 
 ![alt text](https://github.com/viragkiss/tiny-flower/blob/master/Final%20Project/Images%20and%20Videos/002.MOV "Video 3")
 
-## **List of important parts**
+### **List of important parts**
 * Analog joystick
 * Arduino UNO with soldered breadboard
 * Laptop
 * Handrest with the joystick for convenient use (See Video 1)
 
-## **Code**
+### **Code**
 
-The entire code is long and complicated. See Final Project/Codes folder. Link:
+The entire code is too long and complicated to insert all of it here. See Final Project/Codes folder. Link:
 
 https://github.com/viragkiss/tiny-flower/tree/master/Final%20Project/Codes
 
-## **How the project works**
+### **How the project works**
 
 The behaviour of the particles is commanded by the user through a combination of key holds and joystick movements.
 
@@ -49,7 +50,7 @@ Processing draws data from the joystick through Arduino and maps it to its own s
 Processing then uses the X and Y coordinate inputs from Arduino to animate particles at the location of the joystick.
 The rest of the interactions are written in the Processing code using Daniel Shiffman's Box2d library and object-oriented programming.
 
-## **Building the project**
+### **Building the project**
 
 Building the project required extra work to build a platform for the joystick to be used comfortably. I thank my instructor Michael Shiloh for providing me with a soldered breadboard that already included the connections from the joystick to the Arduino pins.
 
@@ -73,6 +74,11 @@ Here are some progress photos from how the sand was going to look like:
 ![alt text](https://github.com/viragkiss/tiny-flower/blob/master/Final%20Project/Images%20and%20Videos/sandgrains_color.JPG "Colored")
 
 Using the Box2d library solved most of the difficulty of modelling particle interactions and simplified the sketch from 3D to 2D while
-keeping it interesting. 
+keeping it interesting.
 
-Discuss feedback you received during user testing, and what changes you made
+### **User testing**
+
+During user testing, I got mixed feedback. One criticism was that the orientation of the XY axes are different in Processing and
+Arduino and so it was difficult for the user to navigate the movement of the joystick. This is why I flipped the Y values in the Processing code to map the orientation of Arduino to that of Processing.
+
+Another criticism was that without me telling the user what to do, they didn't know how to approach the project. To overcome this, I included a small set of instructions in the tank's upper left corner.
