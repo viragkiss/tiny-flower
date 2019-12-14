@@ -5,7 +5,8 @@ This project was created to model particles and let users play around with them 
 the user, they can be pulled and pushed around, and they can be removed from the box. 
 
 ## **Pictures and videos:**
-
+Pictures:
+![alt text](Final Project/Images and Videos/IMG_4466.jpg)
 
 System diagram of the hardware and software
 List of important parts (don’t include wires, resistors, etc.)
